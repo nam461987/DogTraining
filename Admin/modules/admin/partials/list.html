@@ -1,0 +1,81 @@
+﻿<h4 class="header-title m-t-0 m-b-30">Danh sách người dùng</h4>
+<section class="content">
+    <div class="box box-warning">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            <label>Phân loại:</label>
+                            <div class="row">
+                                <div class="col-md-3 col-xs-6">
+                                    <select ng-model="condition.TypeId" ng-options="option as option.DisplayText for option in options.TypeId track by option.Value" class="form-control input-sm js-example-basic-single"></select>
+                                </div>
+                                <div class="col-md-3 col-xs-6">
+                                    <input type="text" ng-model="condition.Keyword" class="form-control input-sm" placeholder="Nhập vào tên">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label></label>
+                            <div class="row">
+                                <div class="col-xs-9">
+                                    <a ng-click="reload()" class="btn btn-danger btn-sm">Tìm</a>
+                                    <a ng-click="reset()" class="btn btn-primary btn-sm">Hiển thị tất cả</a>
+                                    <a ng-if="permissions.indexOf('admin_user_create') != -1" ng-click="create()" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i>&nbsp;Thêm mới</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 15px;">
+                <div class="col-md-12 table-responsive" ng-show="records.length > 0">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="sorting" ng-repeat="f in fields" ng-click="order(f.field, !reverse)">
+                                    {{f.name}}
+                                </th>
+                                <th>Tác vụ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-if="record.Id != 1" class="animate-repeat" ng-repeat="record in records">
+                                <td ng-repeat="item in record track by $index" ng-switch on="fields[$index].type">
+                                    <span ng-switch-when="date" ng-bind-html="item|svcDate"></span>
+                                    <span ng-switch-when="datetime" ng-bind-html="item|svcDateTime"></span>
+                                    <span ng-switch-when="money" ng-bind-html="item|svcMoney"></span>
+                                    <span ng-switch-when="select" ng-bind-html="item|svcOption:fields[$index].field:fields[$index].option"></span>
+                                    <a ng-if="record.Active === 1 && permissions.indexOf('admin_user_delete') != -1" href="javascript:;" ng-confirm-message="Bạn có chắc muốn xóa dữ liệu này?" ng-confirm-click="delete(record.Id, record.Active)"><span ng-switch-when="active" ng-bind-html="item|svcActive"></span></a>
+                                    <a ng-if="record.Active === 0 && permissions.indexOf('admin_user_delete') != -1" href="javascript:;" ng-confirm-message="Bạn có chắc muốn phục hồi dữ liệu này?" ng-confirm-click="delete(record.Id, record.Active)"><span ng-switch-when="active" ng-bind-html="item|svcActive"></span></a>
+                                    <span ng-switch-default ng-bind-html="item"></span>
+                                </td>
+                                <td>
+                                    <a ng-if="permissions.indexOf('admin_user_update') != -1" ng-click="edit(record.Id)" title="Chỉnh sửa"><i class="fa fa-edit"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <svc-pagination data-total-record="{{totalRecord}}" data-limit="{{limit}}"></svc-pagination>
+
+                </div>
+                <div class="col-md-12" ng-show="records.length == 0" style="margin-top: 15px;">
+                    <div class="col-md-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Không tìm thấy dữ liệu phù hợp với điều kiện tìm kiếm
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay">
+            <i class="fa fa-refresh fa-spin"></i>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,50 @@
+﻿<section id="gallery" class="dog-bg1 bg-light pb-0">
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>Our Gallery</h2>
+        </div>
+        <!-- /Section-heading -->
+    </div>
+    <!-- /container -->
+    <!-- centered Gallery navigation -->
+    <ul class="nav nav-pills cat center-nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="#" data-toggle="tab" data-filter="*">All</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="tab" data-filter=".Image">Images</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="tab" data-filter=".Video">Videos</a>
+        </li>
+    </ul>
+    <!-- /ul -->
+    <!-- Gallery -->
+    <div id="gallery-isotope" class="mt-5">
+        @if (ViewBag.Dogs != null && ViewBag.Dogs.Count > 0)
+        {
+            foreach (var item in ViewBag.Dogs)
+            {
+                <div class="@(item.Type==1?"Image":"Video") col-lg-3 col-sm-6 col-md-6">
+                    <div class="isotope-item">
+                        @if (item.Type == 1)
+                        {
+                            <div class="gallery-thumb">
+
+                                <img class="img-fluid" src="@item.Url.Split('|')[1]" alt="@item.Name">
+                                <a href="@item.Url.Split('|')[0]" title="@item.Name">
+                                    <span class="overlay-mask"></span>
+                                </a>
+                            </div>
+                        }
+                        @if (item.Type == 2)
+                        {
+                            <iframe class="embed-responsive-item" src="@item.Url" width="100%" allowfullscreen></iframe>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <!-- /gallery-isotope-->
+</section>

@@ -1,0 +1,47 @@
+﻿@section styles{
+    <link href="/bower_components/angular-animate/angular-animation.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/Content/css/datepicker3.css")" rel="stylesheet" type="text/css" />
+    <link href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/Content/css/bootstrap-timepicker.min.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card-box">
+                    <div data-ng-app="gcApp">
+                        <div ui-view></div> <!-- This is where our views will load -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="@Url.Content("/Content/js/moment.min.js")"></script>
+    <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/Content/js/bootstrap-timepicker.min.js"></script>
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/ui-router/angular-ui-router.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/angular-utils-pagination/dirPagination.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script data-require="ui-select2@0.0.4" data-semver="0.0.4" src="//rawgithub.com/angular-ui/ui-select2/master/src/select2.js"></script>
+    <script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+    <script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+    <script src="/modules/dog/app.js"></script>
+    <script src="/modules/dog/controllers.js"></script>
+    <script src="/modules/dog/config.js"></script>
+    <script src="/modules/dog/services.js"></script>
+    <script src="/modules/common/queue.js"></script>
+    <script src="/modules/common/filters.js"></script>
+    <script src="/modules/common/cache.js"></script>
+    <script src="/modules/common/directives.js"></script>
+}

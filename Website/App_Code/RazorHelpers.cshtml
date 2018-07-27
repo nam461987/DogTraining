@@ -1,0 +1,56 @@
+﻿@helper GeneratePaging(int currentPage, int totalPage)
+{
+//var previousPageIsEllipsis = false;
+
+if (totalPage > 1)
+{
+    var numPrevPages = 5;
+    var numNextPages = 5;
+
+    var prevPagesArr = new List<int>();
+    for (var i = currentPage - numPrevPages; i < currentPage; i++)
+    {
+        if (i >= 1)
+        {
+            prevPagesArr.Add(i);
+        }
+    }
+
+    var nextPagesArr = new List<int>();
+    for (var j = currentPage + 1; j < currentPage + numNextPages; j++)
+    {
+        if (j <= totalPage)
+        {
+            nextPagesArr.Add(j);
+        }
+    }
+
+
+
+    <ul class="pagination">
+        <li class="page-item @(currentPage == 1 ? "disabled":"")">
+            <a href="@(currentPage == 1 ? "":("?page=" + (currentPage - 1)))" class="page-link" aria-label="Previous">
+                <span aria-hidden="true">«</span>
+            </a>
+        </li>
+        @foreach (var i in prevPagesArr)
+        {
+            <li class="page-item"><a href="?page=@i">@i</a></li>
+        }
+
+        <li class="page-item"><a href="javascript:;" class="active">@currentPage</a></li>
+
+        @foreach (var i in nextPagesArr)
+        {
+            <li class="page-item"><a href="?page=@i">@i</a></li>
+        }
+
+        <li class="page-item @(currentPage == totalPage ? "disabled":"")">
+            <a href="@(currentPage == totalPage ? "":("?page=" + (currentPage + 1)))" class="page-link" aria-label="Next">
+                <span aria-hidden="true">»</span>
+            </a>
+        </li>
+    </ul>
+
+}
+}

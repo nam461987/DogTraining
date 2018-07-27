@@ -1,0 +1,43 @@
+﻿@section styles{
+    <link href="/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="/bower_components/angular-animate/angular-animation.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/Content/css/datepicker3.css")" rel="stylesheet" type="text/css" />
+    <link href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/Content/css/bootstrap-timepicker.min.css")" rel="stylesheet" type="text/css" />
+}
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card-box">
+                    <div ng-app="ngBus">
+                        <div ng-view></div> <!-- This is where our views will load -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="@Url.Content("/Content/js/moment.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Content/js/bootstrap-datepicker.js")"></script>
+    <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/Content/js/bootstrap-timepicker.min.js"></script>
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/ui-router/angular-ui-router.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/angular-utils-pagination/dirPagination.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+
+    <script src="/modules/group/app.js"></script>
+    <script src="/modules/group/controllers.js"></script>
+    <script src="/modules/group/config.js"></script>
+    <script src="/modules/group/services.js"></script>
+    <script src="/modules/group/filters.js"></script>
+    <script src="/modules/group/cache.js"></script>
+    <script src="/modules/group/directives.js"></script>
+}

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+</body>
+</html><div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="dataTables_info" id="datatable-3_info">
+            Hiển thị <select ng-model="pageLimit" ng-options="option.DisplayText for option in pageOptions track by option.Value"></select>
+            từ {{(currentPage - 1) * limit}} đến
+            {{currentPage * limit}}
+            trong tổng số {{totalRecord}} kết quả
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="dataTables_paginate" ng-if="totalPage > 1">
+            <ul class="pagination">
+                <li class="paginate_button previous" ng-class="{ disabled : currentPage == 1 }">
+                    <a ng-click="setCurrent(currentPage - 1)">Trang trước</a>
+                </li>
+
+                <li ng-repeat="p in prevPagesArr" class="paginate_button">
+                    <a ng-click="setCurrent(p)">{{p}}</a>
+                </li>
+
+                <li class="paginate_button disabled">
+                    <a ng-bind-html="currentPage"></a>
+                </li>
+
+                <li ng-repeat="p in nextPagesArr" class="paginate_button">
+                    <a ng-click="setCurrent(p)">{{p}}</a>
+                </li>
+
+                <li class="paginate_button next" ng-class="{ disabled : currentPage == totalPage }">
+                    <a ng-click="setCurrent(currentPage + 1)">Trang sau</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

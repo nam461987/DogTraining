@@ -1,0 +1,107 @@
+﻿<!-- MODAL -->
+<div id="dialog" class="modal-block mfp-hide">
+    <section class="panel panel-info panel-color">
+        <header class="panel-heading">
+            <h2 class="panel-title">Chú ý !!!</h2>
+        </header>
+        <div class="panel-body">
+            <div class="modal-wrapper">
+                <div class="modal-text">
+                    <p>Bạn muốn xóa dữ liệu này?</p>
+                </div>
+            </div>
+            <div class="row m-t-20">
+                <div class="col-md-12 text-right">
+                    <button id="dialogConfirm" class="btn btn-primary waves-effect waves-light">Xác nhận</button>
+                    <button id="dialogCancel" class="btn btn-default waves-effect">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@*public-modal Modal*@
+<div class="modal public-modal" tabindex="-1" role="dialog" aria-labelledby="">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="publicUpdate_btn">Lưu</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*add-customer-modal Modal*@
+<div id="add-customer-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tạo tài khoản khách hàng</h4>
+            </div>
+            <div class="modal-body">
+                <form id="add-customer-modal-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Họ tên (*)</label>
+                                <input type="text" class="form-control" name="DisplayName">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Số điện thoại</label>
+                                <input type="number" class="form-control" name="PhoneNumber">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Email</label>
+                                <input type="text" class="form-control" name="Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Ngày sinh</label>
+                                <input type="text" class="form-control datepicker" name="BirthDate" value="01/01/1990">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Giới tính</label>
+                                <select class="form-control select2" name="Gender">
+                                    <option value="Nam">Nam</option>
+                                    <option value="Nữ">Nữ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Địa chỉ</label>
+                                <input type="text" class="form-control" name="Address">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Ghi chú</label>
+                                <textarea rows="3" class="form-control" name="Describe"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-success waves-effect" id="Add_Customer_btn">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div>

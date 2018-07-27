@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập";
+}
+@section styles{
+
+}
+<div class="account-pages"></div>
+<div class="clearfix"></div>
+<div class="wrapper-page">
+    <div class="text-center">
+        <a href="index-2.html" class="logo"><span>Admin<span>to</span></span></a>
+        <h5 class="text-muted m-t-0 font-600">Đổi mật khẩu</h5>
+    </div>
+    <div class="m-t-40 card-box">
+        <div class="text-center">
+            <h4 class="text-uppercase font-bold m-b-0">Đổi mật khẩu</h4>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal m-t-20" method="post" id="changepass_form">
+                <input type="text" readonly class="hidden" value="@HttpContext.Current.Session["UserId"]" name="Id" />
+                <input type="text" readonly class="hidden" value="@HttpContext.Current.Session["UserName"]" name="UserName" />
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="password" required="" placeholder="Old Password" name="OldPassWord">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input class="form-control" id="Password" type="password" required="" placeholder="Password" name="PasswordHash">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="password" required="" placeholder="Confirm Password" name="RePasswordHash">
+                    </div>
+                </div>
+                <div class="form-group text-center m-t-40">
+                    <div class="col-xs-12">
+                        <button class="btn btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">
+                            Đồng ý
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- end card-box -->
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <p class="text-muted">Already have account?<a href="page-login.html" class="text-primary m-l-5"><b>Sign In</b></a></p>
+        </div>
+    </div>
+</div>
+<!-- end wrapper page -->
+
+@section scripts{
+    <script src="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //add method required no space in field
+            jQuery.validator.addMethod("noSpace", function (value, element) {
+                return value.indexOf(" ") < 0 && value != "";
+            }, "Tên đăng nhập không được có khoảng cách");
+            //------------------------------------------
+
+            var $validator = $("#changepass_form").validate({
+                rules: {
+                    UserName: {
+                        required: true,
+                        minlength: 6,
+                        noSpace: true
+                    },
+                    PasswordHash: {
+                        minlength: 6
+                    },
+                    RePasswordHash: {
+                        minlength: 6,
+                        equalTo: "#Password"
+                    }
+                }
+            });
+        });
+    </script>
+}

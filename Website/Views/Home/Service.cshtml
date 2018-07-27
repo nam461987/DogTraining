@@ -1,0 +1,84 @@
+﻿@using Website.Services
+@{
+    ViewBag.Title = ViewBag.Service.Name;
+}
+
+@Html.Partial("_JumbotronPartial")
+
+<!-- ==== Page Content ==== -->
+<div class="page">
+    <div class="container">
+        <div class="row">
+            <!-- /col-md-6 -->
+            <div class="col-lg-9 news-content">
+                @*<img src="/Content/img/service-single/feature1.jpg" class="float-left col-md-4 border-irregular1 img-fluid" alt="">*@
+                <img src="@ViewBag.Service.Avatar" />
+                @Html.Raw(ViewBag.Service.NewsContent)
+                <!-- /row -->
+            </div>
+            <!-- /col-md- -->
+            <div class="sidebar col-lg-3 res-margin  card bg-light-custom h-50">
+                <h6>All Services</h6>
+                <div class="list-group">
+
+                    @if (ViewBag.Services != null && ViewBag.Services.Count > 0)
+                    {
+                        foreach (var item in ViewBag.Services)
+                        {
+                            <a href="@Url.RouteUrl("Service",new { id=item.Id,name=WebsiteExtension.Slug(item.Name)})" class="list-group-item list-group-item-action @(item.Id == ViewBag.Service.Id?"active":"")">
+                                @item.Name
+                            </a>
+                        }
+                    }
+                    @*<a href="#" class="list-group-item list-group-item-action">Veterinarian</a>
+                        <a href="#" class="list-group-item list-group-item-action">Pet Hotel</a>
+                        <a href="#" class="list-group-item list-group-item-action">Vaccines</a>*@
+                </div>
+                <!-- /list-group -->
+            </div>
+            <!-- /sidebar -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+    <!-- owl slider -->
+    @*<div id="owl-featured" class="owl-carousel top-centered-nav owl-theme mt-5">
+            <div class="col-md-12">
+                <!-- image -->
+                <a href="/Content/img/service-single/feature1.jpg" title="your caption here">
+                    <img src="/Content/img/service-single/feature1.jpg" class="border-irregular1 img-fluid hover-opacity" alt="">
+                </a>
+            </div>
+            <!-- /col-md-12 -->
+            <div class="col-md-12">
+                <!-- image -->
+                <a href="/Content/img/service-single/feature2.jpg" title="your caption here">
+                    <img src="/Content/img/service-single/feature2.jpg" class="border-irregular2 img-fluid hover-opacity" alt="">
+                </a>
+            </div>
+            <!-- /col-md-12 -->
+            <div class="col-md-12">
+                <!-- image -->
+                <a href="/Content/img/service-single/feature3.jpg" title="your caption here">
+                    <img src="/Content/img/service-single/feature3.jpg" class="border-irregular1 img-fluid hover-opacity" alt="">
+                </a>
+            </div>
+            <!-- /col-md-12 -->
+            <div class="col-md-12">
+                <!-- image -->
+                <a href="/Content/img/service-single/feature4.jpg" title="your caption here">
+                    <img src="/Content/img/service-single/feature4.jpg" class="border-irregular2 img-fluid hover-opacity" alt="">
+                </a>
+            </div>
+            <!-- /col-md-12 -->
+            <div class="col-md-12">
+                <!-- image -->
+                <a href="/Content/img/service-single/feature5.jpg" title="your caption here">
+                    <img src="/Content/img/service-single/feature5.jpg" class="border-irregular1 img-fluid hover-opacity" alt="">
+                </a>
+            </div>
+            <!-- /col-md-12 -->
+        </div>*@
+    <!-- /owl-carousel -->
+</div>
+<!-- /page -->

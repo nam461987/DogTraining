@@ -1,0 +1,120 @@
+﻿@using Admin.Services;
+@{
+    var typeAccount = HttpContext.Current.Session["TypeId"] == null ? 0 : int.Parse(HttpContext.Current.Session["TypeId"].ToString());
+    var currentController = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var currentAction = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+}
+<!-- ========== Left Sidebar Start ========== -->
+<div class="left side-menu">
+    <div class="sidebar-inner slimscrollleft">
+        <!-- User -->
+        <div class="user-box">
+            <div class="user-img">
+                <img src="/assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
+            </div>
+            <h5><a href="#">@HttpContext.Current.Session["UserName"]</a> </h5>
+            <ul class="list-inline">
+                <li>
+                    <a href="@Url.Action("ChangePass","Login")">
+                        <i class="zmdi zmdi-settings"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Logout","Login")" class="text-custom">
+                        <i class="zmdi zmdi-power"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- End User -->
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <ul>
+                <li class="text-muted menu-title">Navigation</li>
+                <li>
+                    <a href="/" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                </li>
+                @if (WebsiteExtension.CheckPermission("dog_see"))
+                {
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect @((currentController.Equals("Dog")) ? "subdrop" : "")"><i class="zmdi zmdi-collection-image"></i> <span> Dog </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled" style="display:@((currentController.Equals("Dog")) ? "block" : "none")">
+                            @if (WebsiteExtension.CheckPermission("dog_list"))
+                            {
+                                <li>
+                                    <a href="@Url.Action("Dog", "Dog")">Dog List</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+                @if (WebsiteExtension.CheckPermission("video_see"))
+                {
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect @((currentController.Equals("Video")) ? "subdrop" : "")"><i class="zmdi zmdi-collection-video"></i> <span> Video </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled" style="display:@((currentController.Equals("Video")) ? "block" : "none")">
+                            @if (WebsiteExtension.CheckPermission("video_list"))
+                            {
+                                <li>
+                                    <a href="@Url.Action("Video", "Video")">Video List</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+                @if (WebsiteExtension.CheckPermission("service_see"))
+                {
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect @((currentController.Equals("Service")) ? "subdrop" : "")"><i class="zmdi zmdi-collection-video"></i> <span> Service </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled" style="display:@((currentController.Equals("Service")) ? "block" : "none")">
+                            @if (WebsiteExtension.CheckPermission("service_list"))
+                            {
+                                <li>
+                                    <a href="@Url.Action("Service", "Service")">Service List</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+                @if (WebsiteExtension.CheckPermission("admin_see"))
+                {
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect @((currentController.Equals("Admin")) ? "subdrop" : "")"><i class="zmdi zmdi-pin-account"></i> <span> Admin </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled" style="display:@((currentController.Equals("Admin")) ? "block" : "none")">
+                            @if (WebsiteExtension.CheckPermission("admin_user_list"))
+                            {
+                                <li class="@((currentAction.Equals("Account")) ? "active" : "")">
+                                    <a href="@Url.Action("Account","Admin")">Danh sách tài khoản</a>
+                                </li>
+                            }
+                            @if (WebsiteExtension.CheckPermission("admin_group_list"))
+                            {
+                                <li class="@((currentAction.Equals("Group")) ? "active" : "")">
+                                    <a href="@Url.Action("Group","Admin")">Danh sách nhóm</a>
+                                </li>
+                            }
+                            @if (WebsiteExtension.CheckPermission("admin_permission_list"))
+                            {
+                                <li class="@((currentAction.Equals("Permission")) ? "active" : "")">
+                                    <a href="@Url.Action("Permission","Admin")">Danh sách quyền</a>
+                                </li>
+                            }
+                            @if (WebsiteExtension.CheckPermission("admin_group_permission_list"))
+                            {
+                                <li class="@((currentAction.Equals("GroupPermission")) ? "active" : "")">
+                                    <a href="@Url.Action("GroupPermission","Admin")">Phân quyền</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <!-- Sidebar -->
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- Left Sidebar End -->

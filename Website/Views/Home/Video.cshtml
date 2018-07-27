@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Videos";
+}
+
+@Html.Partial("_JumbotronPartial")
+
+<div class="page">
+    <div class="container bottom-block-padding">
+        @if (ViewBag.Videos != null && ViewBag.Videos.Count > 0)
+        {
+            for (var i = 0; i < ViewBag.Videos.Count; i = i + 2)
+            {
+                <div class="bg-light-custom card mt-2">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <!-- embed video -->
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <iframe class="embed-responsive-item" src="@ViewBag.Videos[i].Url" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <!-- /col-md -->
+                        @if (i + 1 < ViewBag.Videos.Count)
+                        {
+                            <div class="col-xl-6">
+                                <!-- embed video -->
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    <iframe class="embed-responsive-item" src="@ViewBag.Videos[i+1].Url" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        <!-- /col-md -->
+                        }
+                    </div>
+                    <!-- /row -->
+                </div>
+            }
+
+            if (ViewBag.totalPage > 1)
+            {
+                <div class="col-md-12 text-center">
+                    <!--Start Blog pagination -->
+                    @RazorHelpers.GeneratePaging(ViewBag.currentPage, ViewBag.totalPage);
+                    <!-- End blog pagination -->
+                </div>
+            }
+        }
+    </div>
+    <!-- /container -->
+</div>

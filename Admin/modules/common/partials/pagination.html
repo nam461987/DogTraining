@@ -1,0 +1,36 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="dataTables_info" id="datatable-3_info">
+            Show <select ng-model="pageLimit" ng-options="option.DisplayText for option in pageOptions track by option.Value"></select>
+            from {{(currentPage - 1) * limit}} to
+            {{currentPage * limit}}
+            in total {{totalRecord}} records
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="dataTables_paginate" ng-if="totalPage > 1">
+            <ul class="pagination">
+                <li class="paginate_button previous" ng-class="{ disabled : currentPage == 1 }">
+                    <a href="javascript:;" ng-click="setCurrent(currentPage - 1)">Previous</a>
+                </li>
+
+                <li ng-repeat="p in prevPagesArr" class="paginate_button">
+                    <a href="javascript:;" ng-click="setCurrent(p)">{{p}}</a>
+                </li>
+
+                <li class="paginate_button disabled">
+                    <a href="javascript:;" ng-bind-html="currentPage"></a>
+                </li>
+
+                <li ng-repeat="p in nextPagesArr" class="paginate_button">
+                    <a href="javascript:;" ng-click="setCurrent(p)">{{p}}</a>
+                </li>
+
+                <li class="paginate_button next" ng-class="{ disabled : currentPage == totalPage }">
+                    <a href="javascript:;" ng-click="setCurrent(currentPage + 1)">Next</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

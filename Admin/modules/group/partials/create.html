@@ -1,0 +1,51 @@
+﻿<h4 class="header-title m-t-0 m-b-30">Cập nhật thông tin người dùng</h4>
+<section class="content">
+    <div class="box box-warning">
+        <div class="box-body">
+            <form novalidate="novalidate" role="form">
+                <div class="box-body">
+                    <div class="row">
+                        <div ng-repeat="f in fields | orderBy :'order'" ng-switch on="f.type">
+                            <input ng-switch-when="hidden" type="hidden" id="{{f.field}}" ng-model="record[f.field]" />
+                            <div class="form-group col-md-6" ng-switch-when="date">
+                                <label class="control-label">{{f.name}} (*)</label>
+                                <input type="text" class="form-control" name="{{f.field}}" id="{{f.field}}" ng-model="record[f.field]" dateselect>
+                            </div>
+                            <div class="form-group col-md-6" ng-switch-when="datetime">
+                                <label class="control-label">{{f.name}}</label>
+                                <input type="text" class="form-control" name="{{f.field}}" id="{{f.field}}" ng-model="record[f.field]" datetimeselect>
+                            </div>
+                            <div class="bootstrap-timepicker col-md-6" ng-switch-when="time">
+                                <div class="form-group">
+                                    <label class="control-label">{{f.name}}</label>
+                                    <input type="text" class="form-control" name="{{f.field}}" id="{{f.field}}" ng-model="record[f.field]" timeselect>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6" ng-switch-when="select">
+                                <label class="control-label">{{f.name}}</label>
+                                <select class="form-control select2" name="{{f.field}}" id="{{f.field}}" ng-model="record[f.field]" ng-options="option as option.DisplayText for option in options[f.field]"></select>
+                            </div>
+                            <div class="form-group col-md-6" ng-switch-when="password">
+                                <label class="control-label">{{f.name}}</label>
+                                <input type="password" id="{{f.field}}" ng-model="record[f.field]" class="form-control" ng-disabled="f.disabled === true" />
+                            </div>
+                            <div class="form-group col-md-12" ng-switch-when="textarea">
+                                <label class="control-label">{{f.name}}</label>
+                                <textarea class="form-control" rows="3" id="{{f.field}}" ng-model="record[f.field]" placeholder=""></textarea>
+                            </div>
+                            <div class="form-group col-md-6" ng-switch-default>
+                                <label class="control-label">{{f.name}}</label>
+                                <input type="text" class="form-control" id="{{f.field}}" ng-model="record[f.field]" placeholder="" />
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+
+                <div class="box-footer">
+                    <a ng-click="back()" class="btn btn-default">Quay lại</a>
+                    <a ng-click="insert()" class="btn btn-primary">Thêm</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

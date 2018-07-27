@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- ==== Slider ==== -->
+@Html.Partial("_SliderPartial")
+<!-- /slider -->
+<!-- Section services -->
+@Html.Partial("_ServicePartial")
+<!-- / Section Ends -->
+<!-- Section Blurb -->
+@Html.Partial("_BlurbPartial")
+<!-- SVG effect -->
+<svg id="bigTriangleColor" class="d-none d-sm-block" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z" />
+</svg>
+<!-- / Section Ends -->
+<!-- Section About Us -->
+@Html.Partial("_AboutusPartial")
+<!-- / Section Ends -->
+<!-- Section: Gallery -->
+
+@{Html.RenderAction("_GalleryPartial");}
+
+<!-- / Section Ends -->
+<!-- Section team -->
+@*@Html.Partial("_TeamPartial")*@
+<!-- / Section Ends -->
+<!-- Section Call to action -->
+@Html.Partial("_CallPartial")
+<!--/call-to-action -->
+<!-- Section Adopt -->
+@*@Html.Partial("_AdoptPartial")*@
+<!-- Section Contact -->
+@Html.Partial("_ContactPartial")
+<!-- /Section ends -->
+
+@section scripts{
+
+    <!-- GreenSock -->
+    <script src="/Content/vendor/layerslider/js/greensock.js"></script>
+    <!-- LayerSlider script files -->
+    <script src="/Content/vendor/layerslider/js/layerslider.transitions.js"></script>
+    <script src="/Content/vendor/layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
+    <script src="/Content/vendor/layerslider/js/layerslider.load.js"></script>
+    <!-- Google maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="/Content/js/map.js"></script>
+    <!-- Mailchimp script -->
+    <script src="/Content/js/mailchimp.js"></script>
+    <!-- number counter script -->
+    <script src="/Content/js/counter.js"></script>
+    <!-- Contact Form script -->
+    <script src="/Content/js/contact.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var galH = $("#gallery-isotope iframe").width() + 22;
+            //var galH = $(".col-md-3").width();
+            $("#gallery-isotope iframe").attr("height", galH);
+            console.log(galH + "-" + galH);
+
+            //var businessId = "the-dogtor-k9-training-and-therapy-mission-viejo";
+            //$.ajax({
+            //    type: 'GET',
+            //    url: "/Home/GetYelpReviewsAsync",
+            //    data: JSON.stringify({id:businessId}),
+            //    dataType: 'json',
+            //    success: function (data) {
+            //        alert('successful');
+            //        console.log(data);
+            //    }
+            //});
+
+            $.get('/Home/_FeedbackPartial', function (html) {
+                // insert your html into the DOM
+                $('.partialContents').html(html);
+                $('#owl-testimonial').owlCarousel({
+                    loop: true,
+                    margin: 0,
+                    autoplay: true,
+                    nav: true,
+                    navText: [" <i class='fas fa-chevron-left'></i>", " <i class='fas fa-chevron-right'></i>"],
+                    autoplayHoverPause: true,
+                    dots: true,
+                    responsiveClass: true,
+                    responsive: {
+                        0: {
+                            items: 1,
+                        },
+                        991: {
+                            items: 2,
+                        },
+
+                    }
+                });
+            });
+        });
+
+    </script>
+}

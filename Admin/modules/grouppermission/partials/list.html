@@ -1,0 +1,51 @@
+﻿<h4 class="header-title m-t-0 m-b-30">Gán quyền theo nhóm</h4>
+<section class="content">
+    <div class="box box-warning">
+        <div class="box-body">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row assign-permission-table">
+                        <div class="col-xs-12 col-sm-4">
+                            <h4>Chọn nhóm</h4>
+                            <div class="radio radio-custom" ng-repeat="option in options.GroupId" ng-if="option.Value != '0'">
+                                <input name="selectGroup" type="radio" id="group{{option.Value}}" ng-model="info.selectGroup" value="{{option.Value}}" />
+                                <label for="group{{option.Value}}">
+                                    {{option.DisplayText}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <h4>Chọn module</h4>
+                            <div class="radio radio-custom" ng-repeat="option in options.Module" ng-if="option.Value != ''">
+                                <input name="selectModule" type="radio" id="module{{option.Value}}" ng-model="info.selectModule" value="{{option.Value}}" />
+                                <label for="module{{option.Value}}">
+                                    {{option.DisplayText}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <h4>Chọn quyền</h4>
+                            <div class="checkbox checkbox-primary" ng-repeat="option in options.Permission">
+                                <input id="permission{{option.Id}}" type="checkbox" ng-model="info.selectPermission[option.Id]" ng-true-value="1" ng-false-value="0" ng-change="changePermission()" ng-checked="option.Status === 1">
+                                <label for="permission{{option.Id}}">
+                                    {{option.Description}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-11 text-right">
+                                <button class="btn" type="button" ng-click="apply()">Cập nhật</button>
+                            </div>
+                        </div>
+                        <div class="overlay">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
