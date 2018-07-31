@@ -152,8 +152,10 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -164,6 +166,7 @@
     <Compile Include="Models\admin\Admin_Group_Permission_Config.cs" />
     <Compile Include="Models\admin\Admin_Permission_Config.cs" />
     <Compile Include="Models\AjaxRequestData.cs" />
+    <Compile Include="Models\slider\Slider_Config.cs" />
     <Compile Include="Models\service\News_Config.cs" />
     <Compile Include="Models\dog\Dog_Config.cs" />
     <Compile Include="Models\video\Video_Config.cs" />
@@ -1449,6 +1452,17 @@
     <Content Include="modules\common\filters.js" />
     <Content Include="modules\common\partials\pagination.html" />
     <Content Include="modules\common\queue.js" />
+    <Content Include="modules\slider\app.js" />
+    <Content Include="modules\slider\config.js" />
+    <Content Include="modules\slider\controllers.js" />
+    <Content Include="modules\slider\partials\create.html" />
+    <Content Include="modules\slider\partials\list.html" />
+    <Content Include="modules\slider\services.js" />
+    <Content Include="modules\information\app.js" />
+    <Content Include="modules\information\config.js" />
+    <Content Include="modules\information\controllers.js" />
+    <Content Include="modules\information\partials\create.html" />
+    <Content Include="modules\information\services.js" />
     <Content Include="modules\service\app.js" />
     <Content Include="modules\service\config.js" />
     <Content Include="modules\service\controllers.js" />
@@ -1944,6 +1958,8 @@
     <Content Include="Views\Video\Video.cshtml" />
     <Content Include="Views\Dog\Dog.cshtml" />
     <Content Include="Views\Service\Service.cshtml" />
+    <Content Include="Views\Information\Information.cshtml" />
+    <Content Include="Views\Slider\Slider.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

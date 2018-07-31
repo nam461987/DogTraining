@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- page title -->
-    <title>@ViewBag.Title - Dogtor K9 Training</title>
+    <title>@ViewBag.Title - Dogtor Training</title>
     <!--[if lt IE 9]>
     <script src="/Content/js/respond.js"></script>
     <![endif]-->
@@ -51,6 +51,23 @@
     <script src="/Content/js/plugins.js"></script>
     <!-- Prefix free -->
     <script src="/Content/js/prefixfree.min.js"></script>
+    <script src="/Share/GetGlobalInfo"></script>
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //loop gloabl object value and set
+            for (var key in globalObj) {
+                //console.log(key + " = " + globalObj[key]);
+                if (globalObj[key].length > 0) {
+                    $("text." + key + "").html(globalObj[key]);
+                    $("a." + key + "").attr("href", "mailto:" + globalObj[key]).attr("target","_blank");
+                }
+                else {
+                    $("a." + key + "").hide();
+                }
+            }
+        });
+    </script>
 </body>
 </html>

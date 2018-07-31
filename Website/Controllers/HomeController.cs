@@ -75,6 +75,29 @@ namespace Website.Controllers
 
             return PartialView();
         }
+        public ActionResult _SliderPartial()
+        {
+            List<Slider> Records = Slider.
+                Query("Where Status=1").ToList();
+
+            if (Records.Any())
+            {
+                foreach (var i in Records)
+                {
+                    string avatar = i.Image == null ? "" : i.Image;
+
+                    if (System.IO.File.Exists(Server.MapPath(avatar)))
+                    {
+                        avatar = CreateThumb.ResizeImage(new[] { avatar, "thumb", "800", "1800", "", "4" });
+                    }
+                    i.Image = avatar;
+                }
+            }
+
+            ViewBag.Sliders = Records;
+
+            return PartialView();
+        }
         public async System.Threading.Tasks.Task<ActionResult> _FeedbackPartial()
         {
 

@@ -1,6 +1,6 @@
 ﻿<div id="slider" style="width:1200px;height:800px;margin:0 auto;margin-bottom: 0px;">
     <!-- Slide 1 -->
-    <div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
+    @*<div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
         <!-- bg image  -->
         <img src="/Content/img/slide1.jpg" class="ls-bg" alt="" />
         <!-- text  -->
@@ -17,10 +17,34 @@
             <!-- header-text  -->
         </div>
         <!-- ls-l  -->
-    </div>
+    </div>*@
+    @if (ViewBag.Sliders != null && ViewBag.Sliders.Count > 0)
+    {
+        foreach (var item in ViewBag.Sliders)
+        {
+            <div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
+                <!-- bg image  -->
+                <img src="@item.Image" class="ls-bg" alt="" />
+                <!-- text  -->
+                <div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
+                    <div class="header-text dog-elements">
+                        <h1>@item.Title</h1>
+                        <!--the div below is hidden on small screens  -->
+                        <div class="d-none d-sm-block">
+                            <p class="header-p">@item.Description</p>
+                            <a class="btn btn-primary " href="@item.ButtonLink">@item.ButtonName</a>
+                        </div>
+                        <!--/d-none  -->
+                    </div>
+                    <!-- header-text  -->
+                </div>
+                <!-- ls-l  -->
+            </div>
+        }
+    }
     <!-- ls-slide -->
     <!-- Slide 2 -->
-    <div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
+    @*<div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
         <!-- bg image  -->
         <img src="/Content/img/slide2.jpg" class="ls-bg" alt="" />
         <!-- text  -->
@@ -37,7 +61,7 @@
             <!-- header-text  -->
         </div>
         <!-- ls-l  -->
-    </div>
+    </div>*@
     <!-- ls-slide -->
     <!-- Slide 3 -->
     @*<div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
