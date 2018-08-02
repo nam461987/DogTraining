@@ -1,4 +1,5 @@
-﻿using Admin.Models.slider;
+﻿using Admin.Common;
+using Admin.Models.slider;
 using AutoMapper;
 using DogTraining;
 using System;
@@ -10,6 +11,7 @@ using static Admin.Models.AjaxRequestData;
 
 namespace Admin.Controllers
 {
+    [SessionAuthorize]
     public class SliderController : Controller
     {
         // GET: Slider

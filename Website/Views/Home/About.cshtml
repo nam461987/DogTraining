@@ -5,9 +5,18 @@
 @Html.Partial("_JumbotronPartial")
 
 <!-- ==== Page Content ==== -->
-<div class="page">
+<div class="page aboutus-page">
     <div class="container block-padding pt-0">
         <div class="row">
+            @if (ViewBag.AboutUs != null)
+            {
+                var item = ViewBag.AboutUs;
+
+                @Html.Raw(item.NewsContent);
+            }
+        </div>
+        
+        @*<div class="row">
             <div class="col-lg-5">
                 <img src="/Content/img/about1.jpg" alt="" class="img-fluid border-irregular2" data-aos="zoom-in">
             </div>
@@ -89,7 +98,7 @@
                 <!-- /acordion -->
             </div>
             <!-- /col-lg -->
-        </div>
+        </div>*@
         <!-- /row -->
     </div>
     <!-- /container -->

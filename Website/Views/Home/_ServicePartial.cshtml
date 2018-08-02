@@ -1,4 +1,5 @@
-﻿<section id="services" class="cat-bg3">
+﻿@using System.Text.RegularExpressions;
+<section id="services" class="cat-bg3">
     <div class="container">
         <div class="section-heading text-center">
             <h2>Our Services</h2>
@@ -7,15 +8,21 @@
         <div class="container block-padding pt-0">
             <div class="row">
                 <div class="col-xl-6">
-                    <h3>The best for your pet!</h3>
-                    <p>Aliquam erat volutpat In id fermentum augue, ut pellentesque leo. Maecenas at arcu risus. Donec commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet magna nec lobortis maximus. Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall.</p>
-                    <p><strong>Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall Maecenas at arcu risus scelerisque laoree.</strong></p>
-                    <!-- ul custom-->
-                    <ul class="custom pl-0">
-                        <li>Aliquam erat volut pat.</li>
-                        <li>Ibu lum orci eget, viverra elit liquam erat volut pat phas ellus ac.</li>
-                        <li>Aliquam erat volut pat phas ellu</li>
-                    </ul>
+                    @if (ViewBag.Service != null)
+                    {
+                        var item = ViewBag.Service;
+                        string NewsContent = Regex.Replace(item.NewsContent, @"<img\s[^>]*>(?:\s*?</img>)?", "", RegexOptions.IgnoreCase);
+                        @Html.Raw(NewsContent.Length > 728 ? NewsContent.Substring(0, NewsContent.IndexOf(" ", 728)) + "..." : NewsContent)
+                    }
+                    @*<h3>The best for your pet!</h3>
+                        <p>Aliquam erat volutpat In id fermentum augue, ut pellentesque leo. Maecenas at arcu risus. Donec commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet magna nec lobortis maximus. Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall.</p>
+                        <p><strong>Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall Maecenas at arcu risus scelerisque laoree.</strong></p>
+                        <!-- ul custom-->
+                        <ul class="custom pl-0">
+                            <li>Aliquam erat volut pat.</li>
+                            <li>Ibu lum orci eget, viverra elit liquam erat volut pat phas ellus ac.</li>
+                            <li>Aliquam erat volut pat phas ellu</li>
+                        </ul>*@
                 </div>
                 <!-- /col-xl-->
                 <div class="col-xl-6">

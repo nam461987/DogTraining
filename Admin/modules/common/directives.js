@@ -242,6 +242,7 @@
         require: '?ngModel',
         link: function (scope, elm, attr, ngModel) {
             var ck = CKEDITOR.replace(elm[0]);
+            CKEDITOR.config.autoParagraph = false;
             if (!ngModel) return;
             ck.on('instanceReady', function () {
                 ck.setData(ngModel.$viewValue);

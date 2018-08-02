@@ -1,4 +1,5 @@
-﻿using Admin.Models.service;
+﻿using Admin.Common;
+using Admin.Models.service;
 using AutoMapper;
 using DogTraining;
 using System;
@@ -10,6 +11,7 @@ using static Admin.Models.AjaxRequestData;
 
 namespace Admin.Controllers
 {
+    [SessionAuthorize]
     public class ServiceController : Controller
     {
         // GET: News
@@ -53,11 +55,11 @@ namespace Admin.Controllers
                             querystring += " AND ";
                         }
                     }
-                    Records_source = DogTraining.News.Query("Where Status<2 AND " + querystring + order + "").ToList();
+                    Records_source = DogTraining.News.Query("Where TypeId=2 AND Status<2 AND " + querystring + order + "").ToList();
                 }
                 else
                 {
-                    Records_source = DogTraining.News.Query("Where Status<2 " + order + "").ToList();
+                    Records_source = DogTraining.News.Query("Where TypeId=2 AND Status<2 " + order + "").ToList();
                 }
 
                 // Map du lieu sang Model khac

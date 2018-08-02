@@ -161,8 +161,14 @@
     <Content Include="apple-icon-57x57.png" />
     <Content Include="apple-icon-72x72.png" />
     <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\custom.min.css">
+      <DependentUpon>custom.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\plugins.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <Content Include="Content\fonts\flaticon\flaticon.css" />
     <Content Include="Content\fonts\flaticon\flaticon.html" />
     <Content Include="Content\fonts\flaticon\Flaticon.svg" />
@@ -222,6 +228,9 @@
     <Content Include="Content\img\team\team4.jpg" />
     <Content Include="Content\img\team\team5.jpg" />
     <Content Include="Content\js\contact.js" />
+    <Content Include="Content\js\contact.min.js">
+      <DependentUpon>contact.js</DependentUpon>
+    </Content>
     <Content Include="Content\js\counter.js" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\mailchimp.js" />
@@ -387,6 +396,7 @@
     <Content Include="Content\vendor\layerslider\skins\v5\info.json" />
     <Content Include="Content\vendor\layerslider\skins\v6\info.json" />
     <Content Include="App_Code\RazorHelpers.cshtml" />
+    <None Include="bundleconfig.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

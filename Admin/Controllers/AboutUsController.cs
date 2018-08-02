@@ -1,29 +1,32 @@
 ﻿using Admin.Common;
+using Admin.Models.service;
+using AutoMapper;
 using DogTraining;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static Admin.Models.AjaxRequestData;
 
 namespace Admin.Controllers
 {
     [SessionAuthorize]
-    public class InformationController : Controller
+    public class AboutUsController : Controller
     {
-        // GET: Information
-        public ActionResult Information()
+        // GET: AboutUs
+        public ActionResult AboutUs()
         {
             return View();
         }
-        public JsonResult GetInformationById(int id)
+        public JsonResult GetAboutUsById(int id)
         {
-            Information Record = new Information();
+            News Record = new News();
             string msg = string.Empty;
 
             try
             {
-                Record = DogTraining.Information.SingleOrDefault("Where Id=@0", id);
+                Record = DogTraining.News.SingleOrDefault("Where Id=@0 and Status<2", id);
             }
             catch (Exception ex)
             {
@@ -33,19 +36,18 @@ namespace Admin.Controllers
 
             return Json(new { Result = 1, Records = Record, Message = msg }, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult UpdateInformation(Information md)
+        public JsonResult UpdateAboutUs(News md)
         {
-            Information Record = DogTraining.Information.SingleOrDefault("where Id=@0", md.Id);
+            News Record = DogTraining.News.SingleOrDefault("where Id=@0 And TypeId=3", md.Id);
             string msg = string.Empty;
             try
             {
-                Record.SiteName = md.SiteName;
-                Record.Phone = md.Phone;
-                Record.Email = md.Email;
-                Record.Address = md.Address;
-                Record.Facebook = md.Facebook;
-                Record.Instagram = md.Instagram;
-                Record.Twitter = md.Twitter;
+                Record.Name = md.Name;
+                Record.Description = md.Description;
+                Record.NewsContent = md.NewsContent;
+                Record.Tags = md.Tags;
+                Record.Avatar = md.Avatar;
+                Record.UpdatedDate = DateTime.Now;
                 Record.Save();
             }
             catch (Exception ex)
@@ -56,5 +58,6 @@ namespace Admin.Controllers
 
             return Json(new { Result = 1, Records = Record, Message = msg }, JsonRequestBehavior.AllowGet);
         }
+
     }
 }

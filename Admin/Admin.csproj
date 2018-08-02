@@ -149,6 +149,7 @@
     <Compile Include="Common\Global.cs" />
     <Compile Include="Common\HasCredentialAttribute.cs" />
     <Compile Include="Common\SessionAuthorizeAttribute.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1434,6 +1435,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="modules\aboutus\controllers.min.js">
+      <DependentUpon>controllers.js</DependentUpon>
+    </Content>
     <Content Include="modules\admin\app.js" />
     <Content Include="modules\admin\cache.js" />
     <Content Include="modules\admin\config.js" />
@@ -1452,6 +1456,11 @@
     <Content Include="modules\common\filters.js" />
     <Content Include="modules\common\partials\pagination.html" />
     <Content Include="modules\common\queue.js" />
+    <Content Include="modules\aboutus\app.js" />
+    <Content Include="modules\aboutus\config.js" />
+    <Content Include="modules\aboutus\controllers.js" />
+    <Content Include="modules\aboutus\partials\create.html" />
+    <Content Include="modules\aboutus\services.js" />
     <Content Include="modules\slider\app.js" />
     <Content Include="modules\slider\config.js" />
     <Content Include="modules\slider\controllers.js" />
@@ -1916,6 +1925,8 @@
     <Content Include="Content\datatables\extensions\TableTools\images\psd\file_types.psd" />
     <Content Include="Content\datatables\extensions\TableTools\images\psd\printer.psd" />
     <Content Include="Content\datatables\extensions\TableTools\Readme.md" />
+    <None Include="bundleconfig.json" />
+    <Content Include="Content\WebTutorial.docx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Common\Global.js" />
@@ -1960,6 +1971,7 @@
     <Content Include="Views\Service\Service.cshtml" />
     <Content Include="Views\Information\Information.cshtml" />
     <Content Include="Views\Slider\Slider.cshtml" />
+    <Content Include="Views\AboutUs\AboutUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

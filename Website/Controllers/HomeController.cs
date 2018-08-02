@@ -20,6 +20,10 @@ namespace Website.Controllers
 
         public ActionResult About()
         {
+            News Record = News.SingleOrDefault("Where TypeId=3");
+
+            ViewBag.AboutUs = Record;
+
             return View();
         }
 
@@ -95,6 +99,22 @@ namespace Website.Controllers
             }
 
             ViewBag.Sliders = Records;
+
+            return PartialView();
+        }
+        public ActionResult _AboutusPartial()
+        {
+            News Record = News.SingleOrDefault("Where TypeId=3");
+
+            ViewBag.AboutUs = Record;
+
+            return PartialView();
+        }
+        public ActionResult _ServicePartial()
+        {
+            News Record = News.SingleOrDefault("Select Top 1 * From News Where TypeId=2 AND Status =1");
+
+            ViewBag.Service = Record;
 
             return PartialView();
         }

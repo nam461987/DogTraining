@@ -83,6 +83,9 @@
                 <li>
                     <a href="@Url.Action("Slider", "Slider")" class="waves-effect @((currentController.Equals("Slider")) ? "subdrop" : "")"><i class="zmdi zmdi-collection-video"></i> <span> Slider </span></a>
                 </li>
+                <li>
+                    <a href="@Url.Action("AboutUs", "AboutUs")" class="waves-effect @((currentController.Equals("AboutUs")) ? "subdrop" : "")"><i class="zmdi zmdi-collection-video"></i> <span> AboutUs </span></a>
+                </li>
 
                 @if (WebsiteExtension.CheckPermission("admin_see"))
                 {
